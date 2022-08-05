@@ -4,6 +4,7 @@
 		flex-direction: column;
 		align-items: center;
 		font-family: sans-serif;
+		padding: 50px;
 	}
 	.content-container {
 		display: flex;
@@ -19,10 +20,9 @@
 	.text-container {
 	    padding-right: 100px;
 	}
-   .fas, .far, .fa-solid {
-      font-family: 'Font Awesome 5 Free';
+   .slideIcon {
       color: #cb6812;
-      font-size: 30px;
+		font-size: 30px;
    }
 	.image-container {
 		text-align: center;
@@ -84,15 +84,15 @@
 			return {
 				steps: [
                {
-                  slideIcon: "fas fa-carrot",
-                  slideHeading2: 'Carrots',
-                  slideHeading3: 'Carrots are root vegetables',
+                  slideIcon: "fa-lemon",
+                  slideHeading2: 'Lemon',
+                  slideHeading3: 'Lemons are fruit',
                   slideDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Justo laoreet sit amet cursus sit amet dictum sit.',
                   slideImage: 'images/gradienta-ix_kUDzCczo-unsplash.jpg',
                   slideLink: '#',
                },
                {
-                  slideIcon: "fas fa-arrow-right",
+                  slideIcon: "fa-circle-right",
                   slideHeading2: 'Right arrow',
                   slideHeading3: 'I read left to right',
                   slideDescription: 'Sed viverra ipsum nunc aliquet bibendum enim. Pellentesque sit amet porttitor eget dolor morbi non arcu risus. Dignissim enim sit amet venenatis urna cursus eget nunc scelerisque. Adipiscing bibendum est ultricies integer quis auctor elit sed.',
@@ -100,7 +100,7 @@
                   slideLink: '#',
                },
                {
-                  slideIcon: "fas fa-award",
+                  slideIcon: "fa-star",
                   slideHeading2: 'Award Winning',
                   slideHeading3: 'First place winner',
                   slideDescription: 'Mollis aliquam ut porttitor leo a diam sollicitudin. Augue interdum velit euismod in pellentesque massa placerat duis ultricies. Egestas dui id ornare arcu odio ut. Vel facilisis volutpat est velit egestas dui id.',
@@ -108,15 +108,15 @@
                   slideLink: '#',
                },
                {
-                  slideIcon: "fas fa-store",
-                  slideHeading2: 'Storefront',
-                  slideHeading3: 'What are you selling?',
+                  slideIcon: "fa-moon",
+                  slideHeading2: 'Phases of the Moon',
+                  slideHeading3: "It's a full moon tonight",
                   slideDescription: 'Maecenas accumsan lacus vel facilisis volutpat. Tincidunt dui ut ornare lectus sit amet est placerat in. Lectus proin nibh nisl condimentum id venenatis a.',
                   slideImage: 'images/magicpattern-8h_tctpq4h0-unsplash.jpg',
                   slideLink: '#',
                },
                {
-                  slideIcon: "far fa-credit-card",
+                  slideIcon: "fa-credit-card",
                   slideHeading2: 'Credit Cards',
                   slideHeading3: 'Are for purchases',
                   slideDescription: 'Adipiscing diam donec adipiscing tristique. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque.',
@@ -124,8 +124,8 @@
                   slideLink: '#',
                },
                {
-                  slideIcon: "fas fa-truck",
-                  slideHeading2: 'Truck driving',
+                  slideIcon: "fa-paper-plane",
+                  slideHeading2: 'Flying planes',
                   slideHeading3: 'Is an important skill',
                   slideDescription: 'Magna fermentum iaculis eu non diam. Ante in nibh mauris cursus mattis molestie a iaculis at. Consectetur adipiscing elit ut aliquam purus sit amet. Eleifend mi in nulla posuere sollicitudin aliquam. Placerat in egestas erat imperdiet.',
                   slideImage: 'images/sean-sinclair-C_NJKfnTR5A-unsplash.jpg',
@@ -140,16 +140,19 @@
 		},
 		template: `
 			<div>
+				<head>
+					<link href="all.min.css" rel="stylesheet">
+				</head>
 			    <div class="content-container">
 					<div class="text-container">
-                  <i :class=iconClass></i>
+                  <i :class=iconClass class="slideIcon fa-regular"></i>
 						<h2 id="heading2">{{ steps[0].slideHeading2 }}</h2>
 						<h3 id="heading3">{{ steps[0].slideHeading3 }}</h3>
 						<p id="description">{{ steps[0].slideDescription }}</p>
 						<a id="link" :href=this.linkSrc>Learn More &#8250</a>
 					</div>
 					<div class="image-container">
-						<img id="image" :src=imageSrc width="300">
+						<img id="image" :src=imageSrc width="450">
 					</div>
 				</div>
 				<div class="progress-container">
