@@ -1,0 +1,211 @@
+<style>
+	#app > div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.content-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		min-height: 400px;
+		padding-bottom: 30px;
+		width: 100%;
+	}
+	.text-container, .image-container {
+		flex: 1;
+	}
+	.text-container {
+	    padding-right: 100px;
+	}
+   .fas, .far, .fa-solid {
+      font-family: 'Font Awesome 5 Free';
+      color: #cb6812;
+      font-size: 30px;
+   }
+	.image-container {
+		text-align: center;
+	}
+   .arrow {
+      cursor: pointer;
+      padding: 0 15px;
+   }
+	.progress-container {
+		position: relative;
+		width: 100%;
+	}
+	.progress-bar-background {
+		position: absolute;
+	    cursor: pointer;
+	    height: 4px;
+	    width: 100%;
+	    background-color: #18113C;
+	    top: -14.5px;
+	}
+	.progress-bar {
+		position: absolute;
+    	cursor: pointer;
+    	height: 4px;
+    	width: 7.4883%;
+    	background: linear-gradient(90deg,#cb6812, #f5a300);
+    	top: -14.5px;
+	}
+	.progress-marker {
+		position: absolute;
+	    left: 7.4883%;
+	    top: -19px;
+	    height: 13px;
+	    cursor: pointer;
+	    width: 13px;
+	    border-radius: 50%;
+	    background: linear-gradient(135deg,#cb6812, #f5a300);
+	}
+	.step {
+    	text-align: center;
+		width: calc(100%/6);
+      cursor: pointer;
+	}
+	.tabs {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width: 100%;
+	}
+</style>
+<div id="app">
+	<main-component></main-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+	Vue.component('main-component', {
+		data() {
+			return {
+				steps: [
+               {
+                  slideIcon: "fas fa-carrot",
+                  slideHeading2: 'Carrots',
+                  slideHeading3: 'Carrots are root vegetables',
+                  slideDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Justo laoreet sit amet cursus sit amet dictum sit.',
+                  slideImage: 'images/gradienta-ix_kUDzCczo-unsplash.jpg',
+                  slideLink: '#',
+               },
+               {
+                  slideIcon: "fas fa-arrow-right",
+                  slideHeading2: 'Right arrow',
+                  slideHeading3: 'I read left to right',
+                  slideDescription: 'Sed viverra ipsum nunc aliquet bibendum enim. Pellentesque sit amet porttitor eget dolor morbi non arcu risus. Dignissim enim sit amet venenatis urna cursus eget nunc scelerisque. Adipiscing bibendum est ultricies integer quis auctor elit sed.',
+                  slideImage: 'images/gradienta-LeG68PrXA6Y-unsplash.jpg',
+                  slideLink: '#',
+               },
+               {
+                  slideIcon: "fas fa-award",
+                  slideHeading2: 'Award Winning',
+                  slideHeading3: 'First place winner',
+                  slideDescription: 'Mollis aliquam ut porttitor leo a diam sollicitudin. Augue interdum velit euismod in pellentesque massa placerat duis ultricies. Egestas dui id ornare arcu odio ut. Vel facilisis volutpat est velit egestas dui id.',
+                  slideImage: 'images/hassaan-qaiser-bKfkhVRAJTQ-unsplash.jpg',
+                  slideLink: '#',
+               },
+               {
+                  slideIcon: "fas fa-store",
+                  slideHeading2: 'Storefront',
+                  slideHeading3: 'What are you selling?',
+                  slideDescription: 'Maecenas accumsan lacus vel facilisis volutpat. Tincidunt dui ut ornare lectus sit amet est placerat in. Lectus proin nibh nisl condimentum id venenatis a.',
+                  slideImage: 'images/magicpattern-8h_tctpq4h0-unsplash.jpg',
+                  slideLink: '#',
+               },
+               {
+                  slideIcon: "far fa-credit-card",
+                  slideHeading2: 'Credit Cards',
+                  slideHeading3: 'Are for purchases',
+                  slideDescription: 'Adipiscing diam donec adipiscing tristique. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque.',
+                  slideImage: 'images/milad-fakurian-nY14Fs8pxT8-unsplash.jpg',
+                  slideLink: '#',
+               },
+               {
+                  slideIcon: "fas fa-truck",
+                  slideHeading2: 'Truck driving',
+                  slideHeading3: 'Is an important skill',
+                  slideDescription: 'Magna fermentum iaculis eu non diam. Ante in nibh mauris cursus mattis molestie a iaculis at. Consectetur adipiscing elit ut aliquam purus sit amet. Eleifend mi in nulla posuere sollicitudin aliquam. Placerat in egestas erat imperdiet.',
+                  slideImage: 'images/sean-sinclair-C_NJKfnTR5A-unsplash.jpg',
+                  slideLink: '#',
+               },
+            ],
+				imageSrc: "",
+				linkSrc: "",
+            iconClass: "",
+            stepIndex: 0,
+			}
+		},
+		template: `
+			<div>
+			    <div class="content-container">
+					<div class="text-container">
+                  <i :class=iconClass></i>
+						<h2 id="heading2">{{ steps[0].slideHeading2 }}</h2>
+						<h3 id="heading3">{{ steps[0].slideHeading3 }}</h3>
+						<p id="description">{{ steps[0].slideDescription }}</p>
+						<a id="link" :href=this.linkSrc>Learn More &#8250</a>
+					</div>
+					<div class="image-container">
+						<img id="image" :src=imageSrc>
+					</div>
+				</div>
+				<div class="progress-container">
+					<div class="progress-bar-container">
+						<div class="progress-bar-background"></div>
+						<div class="progress-bar"></div>
+						<div class="progress-marker"></div>
+					</div>
+					<div class="tabs">
+						<div v-for="(step, index) in steps" class="step" :key="index" @click="changeStep(index, (0.98+index));">{{ step.slideHeading2 }}</div>
+                  <span class="arrow" @click="changeStep((stepIndex-1), (stepIndex-0.02));"> &#8249 </span> <span class="arrow" @click="changeStep((stepIndex+1), (1.98+stepIndex));"> &#8250 </span>
+					</div>
+				</div>
+			</div>
+  `,
+		methods:{
+			changeStep(index, num){
+            if(index == 6){
+               index = 0;
+               num = 0.98;
+            }
+            if(index == -1){
+               index = 5;
+               num = 5.98;
+            }
+				var heading2 = document.querySelector('#heading2');
+				var heading3 = document.querySelector('#heading3');
+				var description = document.querySelector('#description');
+            var currentStep = this.steps[index];
+				heading2.innerHTML = currentStep.slideHeading2;
+				heading3.innerHTML = currentStep.slideHeading3;
+				description.innerHTML = currentStep.slideDescription;
+            this.linkSrc = currentStep.slideLink;
+				this.imageSrc = currentStep.slideImage;
+				this.iconClass = currentStep.slideIcon;
+
+				var marker = document.querySelector(".progress-marker");
+				var bar = document.querySelector(".progress-bar");
+				marker.style.left = ((num-0.5) * (100/6.41))+'%';
+				bar.style.width = ((num-0.5) * (100/6.41))+'%';
+			
+            this.stepIndex = index;
+			},
+		},
+		mounted: function(){
+			var heading2 = document.querySelector('#heading2');
+			var heading3 = document.querySelector('#heading3');
+			var description = document.querySelector('#description');
+			this.linkSrc = this.steps[0].slideLink;
+			this.imageSrc = this.steps[0].slideImage;
+         this.iconClass = this.steps[0].slideIcon;
+			heading2.innerHTML = this.steps[0].slideHeading2;
+			heading3.innerHTML = this.steps[0].slideHeading3;
+			description.innerHTML = this.steps[0].slideDescription;
+		}
+	});
+	let vm = new Vue({
+  		el: '#app'
+	})
+</script>
